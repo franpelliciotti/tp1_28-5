@@ -162,7 +162,7 @@ public class Mensaje
     {
         String result = "";
         for (String linea: lineas) {
-            result = result + linea + " ";
+            result = result + linea + "\n";
         }
         return result;
     }
