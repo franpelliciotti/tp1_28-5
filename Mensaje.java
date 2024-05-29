@@ -192,7 +192,7 @@ public class Mensaje
     /**
      * Chequea que la linea introducida no sea nula, 
      * que todos sus caracteres pertenezcan al codigo ASCII,
-     * y que su longitud no supere el maximo pactado (80 caracteres).
+     * y que su longitud no supere el maximo pactado (80 caracteres). //Hecho por nosotros.
      */
     private boolean lineaValida(String linea){
         return linea != null && esAscii(linea) && linea.length() <= LONG_MAX_LINEA;
@@ -200,7 +200,7 @@ public class Mensaje
     
     /**
      * Chequea que un indice a utilizar para una lista sea 
-     * mayor o igual a cero, y sea menor a la cantidad de elementos. 
+     * mayor o igual a cero, y sea menor a la cantidad de elementos. //Hecho por nosotros.
      */
     private boolean posicionValida(int pos){
         return pos >= 0 && pos <= cantLineas() -1;

@@ -103,6 +103,19 @@ public class CodificadorMensajes
     }
     
     /**
+     * Retorna el mensaje ya codificado/cifrado en formato String.
+     * Precondición: el mensaje debe haber sido codificado previamente (i.e., se debe haber llamado a codificarMensaje()).
+     * Postcondicion: se retorna el mensaje cifrado/codificado.
+     * @return el mensaje cifrado en formato String. //Hecho por nosotros.
+     */
+    public String obtenerMensajeCodificadoString() {
+        if (mensajeCodificado == null)
+            throw new IllegalStateException("Mensaje aún no codificado");
+        String msgString = "" + mensajeCodificado;
+        return msgString;
+    }
+    
+    /**
      * Retorna el código de cifrado.
      * Precondición: el mensaje debe haber sido codificado previamente (i.e., se debe haber llamado a codificarMensaje()).
      * Postcondicion: se retorna el código obtenido para el cifrado.
@@ -118,7 +131,7 @@ public class CodificadorMensajes
      * Retorna el código de cifrado en formato String.
      * Precondición: el mensaje debe haber sido codificado previamente (i.e., se debe haber llamado a codificarMensaje()).
      * Postcondicion: se retorna el código obtenido para el cifrado, en formato String.
-     * @return el código de cifrado.
+     * @return el código de cifrado. //Hecho por nosotros.
      */
     public String obtenerCodigoEncripcionString() { 
         if (mensajeCodificado == null)
@@ -176,7 +189,7 @@ public class CodificadorMensajes
         int indiceCodigo = 0;
         for (int i = 0; i < str.length(); i++) {
             char curr = str.charAt(i);
-            char currEncriptado = (char) ((curr + codigo[indiceCodigo]) % 128);
+            char currEncriptado = (char) ((curr + codigo[indiceCodigo]) % 128); 
             result = result + currEncriptado;
             indiceCodigo = (indiceCodigo + 1) % (codigo.length);
         }

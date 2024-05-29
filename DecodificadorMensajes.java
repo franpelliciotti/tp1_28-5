@@ -57,7 +57,21 @@ public class DecodificadorMensajes
      */
     public void decodificarMensaje() 
     {
-        // TODO: Implementar este método
+        if (mensajeDecodificado != null) {
+            throw new IllegalStateException("El mensaje ya está decodificado");
+        }
+        if (mensajeADecodificar.cantLineas() == 0) {
+            mensajeDecodificado = new Mensaje();
+            codigoEncripcion = new int[0];
+        }
+        else {
+            mensajeDecodificado = new Mensaje();
+            for (int i = 0; i < mensajeADecodificar.cantLineas(); i++) {
+                String curr = mensajeADecodificar.obtenerLinea(i);
+                String currCodificada = desencriptarCadena(curr, codigoEncripcion);
+                mensajeDecodificado.agregarLinea(currCodificada);
+            }
+        }
     }
     
     /**
@@ -71,6 +85,20 @@ public class DecodificadorMensajes
         if (mensajeDecodificado == null)
             throw new IllegalStateException("Mensaje aún no decodificado");
         return mensajeDecodificado;
+    }
+    
+    /**
+     * Retorna el mensaje ya decodificado/descifrado en formato String.
+     * Precondición: el mensaje debe haber sido decodificado previamente (i.e., 
+     * se debe haber llamado a decodificarMensaje()).
+     * Postcondicion: se retorna el mensaje descifrado/decodificado.
+     * @return el mensaje descifrado en formato String.
+     */
+    public String obtenerMensajeDecodificadoString() {
+        if (mensajeDecodificado == null)
+            throw new IllegalStateException("Mensaje aún no decodificado");
+        String msgString = "" + mensajeDecodificado;
+        return msgString;
     }
     
     /**
