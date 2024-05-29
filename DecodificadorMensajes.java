@@ -86,9 +86,17 @@ public class DecodificadorMensajes
      * @param codigo es el código a utilizar para la desencripción
      */
     private String desencriptarCadena(String str, int[] codigo) {
-        // TODO: Implementar este método, sustituyendo la línea
-        // debajo con el código correspondiente a la funcionalidad
-        return null;
+        if (str == null) throw new IllegalArgumentException("Cadena nula");
+        if (codigo == null) throw new IllegalArgumentException("Código inválido");
+        String result = "";
+        int indiceCodigo = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char curr = str.charAt(i);
+            char currEncriptado = (char) ((curr - codigo[indiceCodigo]) % 128);
+            result = result + currEncriptado;
+            indiceCodigo = (indiceCodigo + 1) % (codigo.length);
+        }
+        return result;
     }
     
 }

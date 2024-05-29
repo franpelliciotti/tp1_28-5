@@ -57,7 +57,6 @@ public class CodificadorMensajes
     public void codificarMensaje() 
     {
         if (mensajeCodificado != null) {
-            // mensaje ya codificado
             throw new IllegalStateException("El mensaje ya está codificado");
         }
         if (mensajeACodificar.cantLineas() == 0) {
@@ -109,11 +108,22 @@ public class CodificadorMensajes
      * Postcondicion: se retorna el código obtenido para el cifrado.
      * @return el código de cifrado.
      */
-    public String obtenerCodigoEncripcion() { //Método modificado para retornar código como String.
+    public int[] obtenerCodigoEncripcion() { 
         if (mensajeCodificado == null)
             throw new IllegalStateException("Mensaje aún no codificado");
-            
-        return Arrays.toString(codigoEncripcion); //Conversión de arreglo a String
+        return codigoEncripcion; 
+    }
+    
+    /**
+     * Retorna el código de cifrado en formato String.
+     * Precondición: el mensaje debe haber sido codificado previamente (i.e., se debe haber llamado a codificarMensaje()).
+     * Postcondicion: se retorna el código obtenido para el cifrado, en formato String.
+     * @return el código de cifrado.
+     */
+    public String obtenerCodigoEncripcionString() { 
+        if (mensajeCodificado == null)
+            throw new IllegalStateException("Mensaje aún no codificado");
+        return Arrays.toString(codigoEncripcion); 
     }
     
     /**
