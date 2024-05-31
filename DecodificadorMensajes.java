@@ -120,7 +120,6 @@ public class DecodificadorMensajes
         int indiceCodigo = 0;
         for (int i = 0; i < str.length(); i++) {
             char curr = str.charAt(i);
-            int desplazamiento = codigo[indiceCodigo];
             char currDesencriptado = (char) ((curr - codigo[indiceCodigo] + 128) % 128); 
             result = result + currDesencriptado;
             indiceCodigo = (indiceCodigo + 1) % (codigo.length);
